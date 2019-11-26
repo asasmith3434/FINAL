@@ -45,7 +45,7 @@ var setup= function(data)
     
     
     var xScale = d3.scaleLinear()
-                    .domain(["2006", "2018"])
+                    .domain([2005, 2018])
                     .range([0, width]);
     
     var yScale = d3.scaleLinear()
@@ -77,23 +77,26 @@ d3.select("svg")
  
    var types= ["Games Played", "Goals", "Power Play Goals"] 
     
- d3.select("#Button")
+ /*d3.select("#Button")
     .selectAll("options")
     .data(types)
     .enter()
     .append('option')
     .text(function(d) { return d})
-    .attr("value", function (d) { return d})
+    .attr("value", function (d) { return d}) */
     
-var mycolor= d3.scaleOrdinal()
+/*var mycolor= d3.scaleOrdinal()
 .domain(types)
-.range(d3.schemeSet2)
+.range(d3.schemeSet2) */
     
-drawLegend(data, cScale)
-drawArray(data, xScale, yScale, cScale)
+//drawLegend(data, cScale)
+   
+   
+drawArray(data, xScale, yScale, cScale, "Games")
+    drawArray(data, xScale, yScale, cScale, "Goals")
 }
 
-var drawLegend= function(data, cScale)
+/*var drawLegend= function(data, cScale)
 {
 d3.select("svg")
      .append("g").attr("id", "legend")
@@ -120,18 +123,19 @@ gs.append("rect").attr("width", 10).attr("height", 10);
     .attr("y", 10)
     .attr("fill", "black")
 }
+*/
 
-var drawArray= function(data, xScale, yScale, cScale, index)
+var drawArray= function(data, xScale, yScale, cScale, dimension)
 {
    
     var lineGenerator= d3.line()
-        .x(function(num, ind) { return yScale(num);})
-        .y(function(num) { return yScale(num);})
+        .x(function(num) { return xScale(num.Season);})
+        .y(function(num) { return yScale(num[dimension]);})
         .curve(d3.curveMonotoneX)
     d3.select("#graph")
-    .select("path")
-    .datum(data[index].map(function(d) { return d.Goals}))
-    .transition(1000)
+    .append("path") //or transition
+    .datum(data)//(function(d) { return d.Goals}))
+    //.transition(1000)
     .attr("d", lineGenerator)
     
     /*var arrays= d3.select("#graph")
