@@ -162,6 +162,6 @@ var drawArray= function(data, xScale, yScale, cScale, dimension)
    return  row.Games
     
 }
-    var mapping = data.map(WSH)
+    
 }*/
 }
