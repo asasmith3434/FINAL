@@ -83,24 +83,17 @@ d3.select("svg")
         .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
         .call(yAxis)
 
-    /*d3.select("svg")
+    d3.select("svg")
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", (margins.left-55))
     .attr("x", 0-(height/2))
    .attr("dy", "lem")
     .style("text-anchor", "middle")
-    .text("Percentage Difference") */
+    .text("Percentage Difference") 
  
-  // var types= ["Games Played", "Goals", "Power Play Goals"] 
-    
- /*d3.select("#Button")
-    .selectAll("options")
-    .data(types)
-    .enter()
-    .append('option')
-    .text(function(d) { return d})
-    .attr("value", function (d) { return d}) */
+
+
   var l1=false; 
 
    d3.select("#Button")
@@ -251,9 +244,10 @@ d3.select("svg")
    // drawArray(data, xScale, yScale, cScale, "Penalty")
     // drawArray1(data, xScale, yScale, cScale)
     drawLegend(array, cScale)
+    drawArray(data, xScale, yScale, cScale, "Crosby")
 }
-var array= ["Games", "Goals", "Penalty", "PowerPlays", "Shots"]
-var drawLegend= function(array, cScale, dimension)
+var array= ["Games", "Goals", "Penalty", "PowerPlays", "Shots", "Crosby"]
+var drawLegend= function(array, cScale)
 {
     var width= 200;
     var height= 200;
@@ -293,11 +287,14 @@ gs.append("text")
 var drawArray= function(data, xScale, yScale, cScale, dimension)
 {
    var arrays= d3.select("#graph")
+    
    .append("g")
+ 
    .attr("id", dimension)
    .attr("fill", "none")
    .attr("stroke",  cScale(dimension))
    .attr("stroke-width", 4)
+
    
     var lineGenerator= d3.line()
         .x(function(num) { return xScale(num.Season);})
@@ -306,7 +303,20 @@ var drawArray= function(data, xScale, yScale, cScale, dimension)
    
     arrays.append("path") //or transition
     .datum(data)//(function(d) { return d.Goals}))
-    //.transition(1000)
+   .transition(1000)
     .attr("d", lineGenerator)
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

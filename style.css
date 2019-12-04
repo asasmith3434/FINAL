@@ -1,0 +1,49 @@
+svg{ 
+float: right;
+    width: 800px;
+    height: 400px;
+     background-color: white;
+    border: 15px solid red;
+  padding: 50px;
+  margin: auto;
+}
+
+p{
+    text-align: center;
+    background-color: white;
+  width: 300px;
+  border: 15px solid red;
+  padding: 50px;
+  margin: auto;
+    
+}
+h1{
+    text-align: center;
+    background-color: white;
+  width: 300px;
+  border: 15px solid red;
+  padding: 50px;
+  margin: auto;
+}
+button{ 
+    text-align: center;
+    background-color: white;
+  width: 300px;
+  border: 5px solid red;
+  padding: 5px;
+  margin: auto;
+}
+
+
+body{
+background-image: url("download.jpg");
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+background-color: black;}
+
+
+
+ 
