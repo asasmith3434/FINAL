@@ -1,50 +1,88 @@
-/*svg{ 
-float: right;
+svg{ 
+margin-left: 25%;
     width: 800px;
-    height: 400px;
+    height: 500px;
      background-color: white;
+    border-style: groove;
     border: 15px solid red;
   padding: 50px;
-  margin: auto;
+ 
 }
 
 p{
-    text-align: center;
+   margin-left: 40%;
+    width: 200px;
     background-color: white;
-  width: 300px;
-  border: 15px solid red;
-  padding: 50px;
-  margin: auto;
+  width: 400px;
+  border: 10px solid red;
+  padding: 10px;
+ 
     
 }
 h1{
-    text-align: center;
-    background-color: white;
+    
+     margin-left: 40%;
   width: 300px;
-  border: 15px solid red;
-  padding: 50px;
-  margin: auto;
+  border: 15px solid blue;
+  padding: 40px;
+
+    text-decoration: underline;
+    
 }
 button{ 
-    text-align: center;
-    background-color: white;
-  width: 300px;
-  border: 5px solid red;
-  padding: 5px;
-  margin: auto;
+    margin-left: 5%;
+    border-style:double;
+    height:50px;
+    width:200px;
+    font-size: 15px;
+} 
+#Button{
+    background-color: aqua;
+    color: black;
+        border-style: groove;
+
+     }
+#Button2{ 
+        background-color: blue;
+    color:white;
+        border-style: groove;
+
 }
 
+#Button3{
+    background-color: aqua;
+    color: black;
+        border-style: groove;
+
+     }
+#Button4{ 
+        background-color: blue;
+    color:white;
+        border-style: groove;
+
+}
+#Button5{
+    background-color: aqua;
+    color: blue;
+    border-style: groove;
+     }
+#Button6{
+    background-color: blue;
+    color: white;
+        border-style: groove;
+
+     }
 
 body{
 background-image: url("download.jpg");
     height: 100%;
     width: 100%;
-    background-repeat: no-repeat;
+    //background-repeat: no-repeat;
     background-position: center;
     background-size: auto;
 background-color: black;}
 
-*/
+
 #tooltip
 {
     position: absolute;

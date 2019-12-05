@@ -65,11 +65,11 @@ d3.select("svg")
     .attr("transform","translate(" + margins.left + " ," + (margins.top + height) + ")")
     .call(xAxis)
  
-    d3.select("svg")   
+  d3.select("svg")   
 .append("text")
     .attr("transform", "translate("+ (width/2) + "," + (height+margins.top+30)+")")
     .style("text-anchor", "middle")
-    .text("Seasons Played on NHL")
+    .text("Seasons Played on NHL")  
    
     
  d3.select(".axis")
@@ -78,14 +78,14 @@ d3.select("svg")
         .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
         .call(yAxis)
 
-   /* d3.select("svg")
+    d3.select("svg")
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", (margins.left-55))
-    .attr("x", 0-(height/2))
-   .attr("dy", "lem")
+    .attr("y", (margins.left-50))
+    .attr("x", 0- (height/2))
+    .attr("dy", "1em")
     .style("text-anchor", "middle")
-    .text("Percentage Difference") */
+    .text("Percent Difference")
  
 
 
@@ -239,7 +239,7 @@ d3.select("svg")
     
     
     
-  /*  var l6=false; 
+    var l6=false; 
 
    d3.select("#Button6")
     .text("Clear All")
@@ -264,7 +264,7 @@ d3.select("svg")
            }
        
        console.log("work")
-                             }) */
+                             }) 
     
     
  
