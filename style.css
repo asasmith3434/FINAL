@@ -1,4 +1,4 @@
-svg{ 
+/*svg{ 
 float: right;
     width: 800px;
     height: 400px;
@@ -44,6 +44,19 @@ background-image: url("download.jpg");
     background-size: auto;
 background-color: black;}
 
+*/
+#tooltip
+{
+    position: absolute;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    background-color: white;
+    pointer-events: none;
+    
+    font-family: sans-serif;
+    font-size: 12px;
+}
 
 
  

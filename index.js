@@ -24,12 +24,7 @@ function(err)
   console.log("negative Ghost Rider", err)  
 }
 
-/*var WSH= function(row)
-{
-    var obj= {}
-    obj.Games= (row.Games)
-    return obj
-}*/
+
 
 
 var setup= function(data)
@@ -83,16 +78,45 @@ d3.select("svg")
         .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
         .call(yAxis)
 
-    d3.select("svg")
+   /* d3.select("svg")
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", (margins.left-55))
     .attr("x", 0-(height/2))
    .attr("dy", "lem")
     .style("text-anchor", "middle")
-    .text("Percentage Difference") 
+    .text("Percentage Difference") */
  
 
+
+   
+         d3.select("#graph")
+        .selectAll("circle")
+        .data(data)
+       .enter()
+        .append("circle")     
+    .on("mouseover", function(d)
+        {
+            var label = "(" + d.Season + "," + d.Goals + ")";
+            d3.select("#tooltip")
+            .text(label)  
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 30) + "px")
+                .classed("hidden", false);
+        })
+        .on("mouseout", function()
+        {
+            d3.select("#tooltip")
+                .classed("hidden", true);
+        })  
+    
+
+    
+  
+            
+
+    
+    
 
   var l1=false; 
 
@@ -103,11 +127,17 @@ d3.select("svg")
        
        l1= !l1; if(l1)
        {
-          drawArray(data, xScale, yScale, cScale, "Games")
+         drawArray(data, xScale, yScale, cScale, "Games")
+         drawplots(data, xScale, yScale, cScale, "Games")
        
+         
+      
        }
       else { d3.select("#Games")
           .remove() 
+            
+           
+            
            
            }
        
@@ -124,7 +154,8 @@ d3.select("svg")
        l2= !l2; if(l2)
        {
           drawArray(data, xScale, yScale, cScale, "Goals")
-       
+           drawplots(data, xScale, yScale, cScale, "Goals")
+  
        }
       else { d3.select("#Goals")
           .remove() 
@@ -143,8 +174,10 @@ d3.select("svg")
        
        l3= !l3; if(l3)
        {
-          drawArray(data, xScale, yScale, cScale, "Penalty")
-       
+         drawArray(data, xScale, yScale, cScale, "Penalty")
+           drawplots(data, xScale, yScale, cScale, "Penalty")
+           
+             
        }
       else { d3.select("#Penalty")
           .remove() 
@@ -165,6 +198,9 @@ d3.select("svg")
        l4= !l4; if(l4)
        {
           drawArray(data, xScale, yScale, cScale, "PowerPlays")
+           drawplots(data, xScale, yScale, cScale, "PowerPlays")
+                        
+
        
        }
       else { d3.select("#PowerPlays")
@@ -187,7 +223,10 @@ d3.select("svg")
        
        l5= !l5; if(l5)
        {
-          drawArray(data, xScale, yScale, cScale, "Shots")
+         drawArray(data, xScale, yScale, cScale, "Shots")
+           drawplots(data, xScale, yScale, cScale, "Shots")
+                         
+
        
        }
       else { d3.select("#Shots")
@@ -200,7 +239,7 @@ d3.select("svg")
     
     
     
-    var l6=false; 
+  /*  var l6=false; 
 
    d3.select("#Button6")
     .text("Clear All")
@@ -209,11 +248,7 @@ d3.select("svg")
        
        l6= !l6; if(l6)
        {
-//drawArray(data, xScale, yScale, cScale, "Games")
-    //drawArray(data, xScale, yScale, cScale, "Goals")
-   //drawArray(data, xScale, yScale, cScale, "Shots")
-   // drawArray(data, xScale, yScale, cScale, "PowerPlays")
-  // drawArray(data, xScale, yScale, cScale, "Penalty") 
+ 
            d3.select("#Games")
           .remove() 
            d3.select("#Goals")
@@ -229,22 +264,38 @@ d3.select("svg")
            }
        
        console.log("work")
-                             }) 
+                             }) */
+    
+    
+ 
+
+    
+
+    
     
   
+    
+   
+     
+    
+    
+    
+    
+    
+    
+    
     
     
     
 
    
-   //drawArray(data, xScale, yScale, cScale, "Games")
-    //drawArray(data, xScale, yScale, cScale, "Goals")
-   //drawArray(data, xScale, yScale, cScale, "Shots")
-   // drawArray(data, xScale, yScale, cScale, "PowerPlays")
-   // drawArray(data, xScale, yScale, cScale, "Penalty")
-    // drawArray1(data, xScale, yScale, cScale)
+   
     drawLegend(array, cScale)
+   
+   // drawplots(data, xScale, yScale, cScale, "Games")
+      // drawplots(data, xScale, yScale, cScale, "Goals")
     drawArray(data, xScale, yScale, cScale, "Crosby")
+   
 }
 var array= ["Games", "Goals", "Penalty", "PowerPlays", "Shots", "Crosby"]
 var drawLegend= function(array, cScale)
@@ -256,7 +307,7 @@ var drawLegend= function(array, cScale)
     
     d3.select("svg")
     .append("g").attr("id", "legend")
-   //.attr("transform", "translate(" + (screen.width - margins.right) + "," + (margins.top) + ")")
+   
     .attr("width", width)
     .attr("height", height)
     
@@ -289,7 +340,7 @@ var drawArray= function(data, xScale, yScale, cScale, dimension)
    var arrays= d3.select("#graph")
     
    .append("g")
- 
+    
    .attr("id", dimension)
    .attr("fill", "none")
    .attr("stroke",  cScale(dimension))
@@ -300,18 +351,50 @@ var drawArray= function(data, xScale, yScale, cScale, dimension)
         .x(function(num) { return xScale(num.Season);})
         .y(function(num) { return yScale(num[dimension]);})
        // .curve(d3.curveMonotoneX)
+            
    
-    arrays.append("path") //or transition
+
+   arrays.append("path") //or transition
     .datum(data)//(function(d) { return d.Goals}))
    .transition(1000)
-    .attr("d", lineGenerator)
+       .attr("d", lineGenerator)
+     
+
+}
+
+var drawplots= function(data, xScale, yScale, cScale, dimension)
+{
+    d3.select("#graph")
+   
+    .selectAll("circle")
+   .data(data)
+   .transition()
+    .duration(1000)
+   .attr("fill", function(trash) 
+        {
+        return cScale(dimension)
+    })
+   .attr("cx", function(num)
+        {
+       return xScale(num.Season)
+   })
+   .attr("cy", function(num)
+        {
+       return yScale(num[dimension])
+   })
+   .attr("r", 6);
+    
+
+  
 
 }
 
 
 
-
-
+     
+    
+    
+     
 
 
 
