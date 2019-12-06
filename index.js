@@ -90,7 +90,7 @@ d3.select("svg")
 
 
    
-         d3.select("#graph")
+       /*  d3.select("#graph")
         .selectAll("circle")
         .data(data)
        .enter()
@@ -109,10 +109,12 @@ d3.select("svg")
             d3.select("#tooltip")
                 .classed("hidden", true);
         })  
-    
+    */
 
     
-  
+  var mine= function(data, xScale, yScale, dimension){ return drawArray(data, xScale, yScale, cScale, "Games")
+         drawplots(data, xScale, yScale, cScale, "Games")
+       tooltip(data, xScale, yScale, "Games") }
             
 
     
@@ -127,13 +129,13 @@ d3.select("svg")
        
        l1= !l1; if(l1)
        {
+         
          drawArray(data, xScale, yScale, cScale, "Games")
          drawplots(data, xScale, yScale, cScale, "Games")
-       
-         
+       tooltip(data, xScale, yScale, "Games")
       
        }
-      else { d3.select("#Games")
+      else { d3.selectAll("#Games")
           .remove() 
             
            
@@ -155,10 +157,11 @@ d3.select("svg")
        {
           drawArray(data, xScale, yScale, cScale, "Goals")
            drawplots(data, xScale, yScale, cScale, "Goals")
-  
+            tooltip(data, xScale, yScale, "Goals") 
        }
-      else { d3.select("#Goals")
+      else { d3.selectAll("#Goals")
           .remove() 
+            
            
            }
        
@@ -176,10 +179,10 @@ d3.select("svg")
        {
          drawArray(data, xScale, yScale, cScale, "Penalty")
            drawplots(data, xScale, yScale, cScale, "Penalty")
-           
+           tooltip(data, xScale, yScale, "Penalty")
              
        }
-      else { d3.select("#Penalty")
+      else { d3.selectAll("#Penalty")
           .remove() 
            
            }
@@ -199,7 +202,7 @@ d3.select("svg")
        {
           drawArray(data, xScale, yScale, cScale, "PowerPlays")
            drawplots(data, xScale, yScale, cScale, "PowerPlays")
-                        
+            tooltip(data, xScale, yScale, "PowerPlays")            
 
        
        }
@@ -225,11 +228,11 @@ d3.select("svg")
        {
          drawArray(data, xScale, yScale, cScale, "Shots")
            drawplots(data, xScale, yScale, cScale, "Shots")
-                         
+           tooltip(data, xScale, yScale, "Shots")              
 
        
        }
-      else { d3.select("#Shots")
+      else { d3.selectAll("#Shots")
           .remove() 
            
            }
@@ -249,15 +252,15 @@ d3.select("svg")
        l6= !l6; if(l6)
        {
  
-           d3.select("#Games")
+           d3.selectAll("#Games")
           .remove() 
-           d3.select("#Goals")
+           d3.selectAll("#Goals")
             .remove()
-            d3.select("#Shots")
+            d3.selectAll("#Shots")
             .remove()
-            d3.select("#PowerPlays")
+            d3.selectAll("#PowerPlays")
             .remove()
-           d3.select("#Penalty")
+           d3.selectAll("#Penalty")
            .remove()
        }
       else { 
@@ -291,7 +294,7 @@ d3.select("svg")
    
    
     drawLegend(array, cScale)
-   
+  
    // drawplots(data, xScale, yScale, cScale, "Games")
       // drawplots(data, xScale, yScale, cScale, "Goals")
     drawArray(data, xScale, yScale, cScale, "Crosby")
@@ -370,6 +373,7 @@ var drawplots= function(data, xScale, yScale, cScale, dimension)
    .data(data)
    .transition()
     .duration(1000)
+     .attr("id", dimension)
    .attr("fill", function(trash) 
         {
         return cScale(dimension)
@@ -391,15 +395,56 @@ var drawplots= function(data, xScale, yScale, cScale, dimension)
 
 
 
-     
+    var tooltip=  function(data, xScale, yScale, dimension)
+  { d3.select("#graph")
+        .selectAll("circle")
+        .data(data)
+       .enter()
+        .append("circle") 
+    .on("mouseover", function(d)
+        {
+            var label = "(" + d.Season + "," + d[dimension] + ")";
+            d3.select("#tooltip")
+            .text(label)  
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 30) + "px")
+                .classed("hidden", false)
+                        
+
+      ;
+        })
+        .on("mouseout", function()
+        {
+            d3.select("#tooltip")
+                .classed("hidden", true);
+        }) 
     
+  }
+
+
+ /*var tooltip2=  function(data, xScale, yScale, dimension)
+  { d3.select("#graph")
+        .selectAll("circle")
+        .data(data)
+       .enter()
+        .append("circle")     
+    .on("mouseover", function(d)
+        {
+            var label = "(" + d.Season + "," + d[dimension] + ")";
+            d3.select("#tooltip2")
+            .text(label)  
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 30) + "px")
+                .classed("hidden", false);
+   
+        })
+        .on("mouseout", function()
+        {
+            d3.select("#tooltip2")
+                .classed("hidden", true);
+        }) 
     
-     
-
-
-
-
-
+  } */
 
 
 
